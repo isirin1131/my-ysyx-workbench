@@ -1,8 +1,8 @@
 all:
-	@echo "Write this Makefile by your self."
-
-sim:
+	verilator --cc --exe --build -j 0 -Wall --trace-fst csrc/dual_cntrl.cpp vsrc/top.v
+sim: all
 	$(call git_commit, "sim RTL") # DO NOT REMOVE THIS LINE!!!
-	@echo "Write this Makefile by your self."
+	obj_dir/Vtop
+	gtkwave wave.fst
 
 include ../Makefile
